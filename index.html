@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bahor 1001 Kafe - Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #0c100e;
+            color: #e4ece7;
+            min-height: 100vh;
+            padding: 40px 15px;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(20, 60, 40, 0.4) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(212, 175, 55, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(12, 25, 18, 0.8) 0%, transparent 100%);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(18, 35, 25, 0.8), rgba(10, 18, 14, 0.9));
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #f5d77f 0%, #d4af37 50%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .brand-subtitle {
+            color: #9cb3a4;
+            font-size: 0.95rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* SECTION TITLE */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #f5d77f;
+            margin: 50px 0 25px 0;
+            text-align: left;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-left: 4px solid #d4af37;
+            padding-left: 15px;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        /* CARD */
+        .card {
+            background: rgba(18, 30, 22, 0.75);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 18px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(212, 175, 55, 0.7);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.25);
+            background: rgba(26, 45, 32, 0.9);
+        }
+
+        /* IMAGE WRAPPER */
+        .image-wrapper {
+            width: 100%;
+            height: 160px;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #050a07;
+            margin-bottom: 15px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .item-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover .item-img {
+            transform: scale(1.1);
+        }
+
+        .item-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #f2f7f4;
+            margin-bottom: 15px;
+            letter-spacing: 0.3px;
+        }
+
+        /* PRICE BUTTON */
+        .price-box {
+            width: 100%;
+            height: 44px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .btn-show {
+            width: 100%;
+            height: 100%;
+            background: rgba(212, 175, 55, 0.06);
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .card:hover .btn-show {
+            background: linear-gradient(135deg, #f5d77f 0%, #d4af37 50%, #aa771c 100%);
+            color: #0c100e;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .price-value {
+            width: 100%;
+            height: 100%;
+            background: rgba(212, 175, 55, 0.15);
+            color: #f5d77f;
+            border: 1.5px solid #d4af37;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 80px;
+            padding: 40px 20px;
+            background: rgba(18, 30, 22, 0.6);
+            border-top: 1px solid rgba(212, 175, 55, 0.25);
+            text-align: center;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-note {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 8px;
+        }
+
+        .footer-subnote {
+            font-size: 0.9rem;
+            color: #9cb3a4;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 480px) {
+            .brand-title { font-size: 2.3rem; }
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .card { padding: 12px; }
+            .image-wrapper { height: 115px; }
+            .item-name { font-size: 0.88rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <h1 class="brand-title">Bahor 1001</h1>
+            <p class="brand-subtitle">bahor 1001 doim xizmatda
+        </header>
+
+        <!-- PIRASHKI VA FAST-FOOD -->
+        <div class="section-title">Pirashkilar va Fichi</div>
+        <div class="grid">
+            <div class="card">
+                <div class="image-wrapper"><img src="qora.jpg" class="item-img" alt="Go'shtli pirashka"></div>
+                <div class="item-name">Go'shtli pirashka</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">8,000 so'm</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-wrapper"><img src="yashil.jpg" class="item-img" alt="Sosiskali perashka"></div>
+                <div class="item-name">Sosiskali perashka</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">8,000 so'm</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-wrapper"><img src="sari.jpg" class="item-img" alt="Kartoshkali perashka"></div>
+                <div class="item-name">Kartoshkali perashka</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">7,000 so'm</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-wrapper"><img src="itni.jpg" class="item-img" alt="Fichi"></div>
+                <div class="item-name">Fichi</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">15,000 so'm</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOMSALAR -->
+        <div class="section-title">Somsalar</div>
+        <div class="grid">
+            <div class="card">
+                <div class="image-wrapper"><img src="somsa.jpg" class="item-img" alt="Go'shtli somsa"></div>
+                <div class="item-name">Go'shtli somsa</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">8,000 so'm</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-wrapper"><img src="mers.jpg" class="item-img" alt="Kadi somsa"></div>
+                <div class="item-name">Kadi somsa</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">7,000 so'm</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-wrapper"><img src="buga.jpg" class="item-img" alt="Kartoshkali somsa"></div>
+                <div class="item-name">Kartoshkali somsa</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">7,000 so'm</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-wrapper"><img src="tele.jpg" class="item-img" alt="Kartoshkali sasiska"></div>
+                <div class="item-name">Kartoshkali sasiska</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">8,000 so'm</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ASOSIY VA MILLIY TAOMLAR -->
+        <div class="section-title">Asosiy Taomlar va Shorvalar</div>
+        <div class="grid">
+            <div class="card">
+                <div class="image-wrapper"><img src="mantir.jpg" class="item-img" alt="Manti (1 porsi)"></div>
+                <div class="item-name">Manti (1 porsi)</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">30,000 so'm</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-wrapper"><img src="kola.jpg" class="item-img" alt="Polov (Osh)"></div>
+                <div class="item-name">Polov (Osh)</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">30,000 so'm</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-wrapper"><img src="shorvakk.jpg" class="item-img" alt="Pelimin"></div>
+                <div class="item-name">Pelimin</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">30,000 so'm</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-wrapper"><img src="qovurmal.jpg" class="item-img" alt="Logmon qavurma"></div>
+                <div class="item-name">Logmon qavurma</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">30,000 so'm</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-wrapper"><img src="gahir.jpg" class="item-img" alt="Go'sht borak"></div>
+                <div class="item-name">Go'shtli borak</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">30,000 so'm</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-wrapper"><img src="BARAK.JPG" class="item-img" alt="Mayak borak"></div>
+                <div class="item-name">Mayak borak</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">30,000 so'm</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-wrapper"><img src="osma.jpg" class="item-img" alt="Osma shorva"></div>
+                <div class="item-name">Osma shorva</div>
+                <div class="price-box" onclick="togglePrice(this)">
+                    <div class="btn-show">Narxni ko'rish</div>
+                    <div class="price-value">30,000 so'm</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-note">Bahor 1001 Kafe</div>
+            <div class="footer-subnote">bahor 1001 tog'ri tanlov
+        </footer>
+    </div>
+
+    <script>
+        function togglePrice(element) {
+            const btn = element.querySelector('.btn-show');
+            const price = element.querySelector('.price-value');
+
+            if (price.style.display === 'flex') {
+                price.style.display = 'none';
+                btn.style.display = 'flex';
+            } else {
+                btn.style.display = 'none';
+                price.style.display = 'flex';
+            }
+        }
+    </script>
+</body>
+</html>
